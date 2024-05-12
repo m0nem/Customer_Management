@@ -1,0 +1,28 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+
+    <li class="nav-item">
+        <a class="nav-link text-dark">@User.Identity.Name</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customer Management</a>
+    </li>
+
+    <li class="nav-item">
+        <form class="form-inline" asp-action="Logout" asp-controller="Users" method="post" asp-area="">
+            <button type="submit" class="nav-link btn-link">Logout</button>   
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Register">Register</a>
+    </li>
+
+}
