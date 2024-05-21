@@ -17,8 +17,8 @@ namespace Customer_Management.Application.UnitTests.Customer.Queries
 {
     public class GetCustomerListRequestHandlerTests
     {
-        IMapper _mapper;
-        Mock<ICustomerRepository> _mockRepository;
+        readonly IMapper _mapper;
+        readonly Mock<ICustomerRepository> _mockRepository;
         public GetCustomerListRequestHandlerTests()
         {
             _mockRepository = MockCustomerRepository.GetCustomerRepository();
@@ -33,10 +33,10 @@ namespace Customer_Management.Application.UnitTests.Customer.Queries
 
 
         [Fact]
-        public async Task GetCustomerListTest() 
+        public async Task GetCustomerListTest()
         {
             var handler = new GetCustomerListRequestHandler(_mockRepository.Object, _mapper);
-            var result=  await handler.Handle(new GetCustomerListRequest(),CancellationToken.None);
+            var result = await handler.Handle(new GetCustomerListRequest(), CancellationToken.None);
             result.ShouldBeOfType<List<CustomerDto>>();
             result.Count.ShouldBe(3);
         }

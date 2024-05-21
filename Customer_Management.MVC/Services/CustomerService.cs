@@ -9,14 +9,12 @@ namespace Customer_Management.MVC.Services
     {
         private readonly IMapper _mapper;
         private readonly IClient _httpClient;
-        private readonly ILocalStorageService _localStorage;
 
 
         public CustomerService(IMapper mapper, IClient httpClient, ILocalStorageService localStorage) : base(httpClient, localStorage)
         {
             _mapper = mapper;
             _httpClient = httpClient;
-            _localStorage = localStorage;
         }
         public async Task<Response<int>> CreateCustomer(CreateCustomerVM customer)
         {

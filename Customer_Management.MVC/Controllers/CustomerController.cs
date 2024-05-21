@@ -63,11 +63,10 @@ namespace Customer_Management.MVC.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var customer = await _customerService.GetCustomerDetails(id);
-
             return View(customer);
         }
 
-        // POST: CustomerController/Edit/5
+        // Put: CustomerController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, CustomerVM customer)
@@ -97,10 +96,10 @@ namespace Customer_Management.MVC.Controllers
             return View(customer);
         }
 
-        // POST: CustomerController/Delete/5
+        // Delete: CustomerController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id,string state)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             try
             {
@@ -108,7 +107,6 @@ namespace Customer_Management.MVC.Controllers
                 if (response.Success)
                 {
                     return RedirectToAction("index");
-
                 }
                 ModelState.AddModelError("", response.ValidationErrors);
             }

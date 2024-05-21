@@ -11,7 +11,5 @@ namespace Customer_Management.Application.Contracts.Identity
         Task<AuthResponse> Login(AuthRequest request);
         Task<RegistrationResponse> Register(RegistrationRequest request);
 
-
-
     }
 }
