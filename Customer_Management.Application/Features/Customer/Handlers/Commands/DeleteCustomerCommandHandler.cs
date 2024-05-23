@@ -24,8 +24,8 @@ namespace Customer_Management.Application.Features.Customer.Handlers.Commands
         public async Task<Unit> Handle(DeleteCustomerCommand request, CancellationToken cancellationToken)
         {
             var customer = await _customerRepository.Get(request.Id);
-            if (customer==null)
-                throw new NotFoundException(nameof(customer),request.Id);
+            if (customer == null)
+                throw new NotFoundException(nameof(customer), request.Id);
 
             await _customerRepository.Delete(customer);
             return Unit.Value;
